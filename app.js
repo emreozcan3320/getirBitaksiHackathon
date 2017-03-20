@@ -29,6 +29,11 @@ mongoose.connection.on('error', function(err) {
     console.log('Database error: ' + err);
 });
 
+//redirect to /getRecord
+app.get('*', function(req, res) {
+    res.redirect('/getRecord');
+});
+
 //for testing
 app.get('/getRecord', function(req, res) {
     records.find({})
@@ -75,5 +80,5 @@ app.post('/getRecord', function(req, res) {
 
 //server listen
 app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+    console.log('Node app is running on port', app.get('port'));
 });
