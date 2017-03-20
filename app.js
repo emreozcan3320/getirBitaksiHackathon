@@ -30,7 +30,7 @@ mongoose.connection.on('error', function(err) {
 });
 
 //for testing
-app.get('/', function(req, res) {
+app.get('/getRecord', function(req, res) {
     records.find({})
         .then(function(record) {
             var copyRecord = record;
