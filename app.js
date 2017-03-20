@@ -16,8 +16,9 @@ app.use(bodyParser.json());
 
 //mongoose promises
 mongoose.Promise = global.Promise;
+
 // Connect To Database
-mongoose.connect(config.database);
+mongoose.connect(process.env.MONGOLAB_URI||"mongodb://localhost:27017/hackathon");
 
 // On Connection
 mongoose.connection.on('connected', function() {
