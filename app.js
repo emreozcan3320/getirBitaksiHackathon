@@ -32,7 +32,7 @@ mongoose.connection.on('error', function(err) {
 
 //redirect to /getRecord
 app.get('/', function(req, res) {
-    res.send("Lütfen /getRecord uzantısını (endpoint) kullanın");
+    res.send("Lütfen get requesti için /getRecord uzantısını (endpoint'ini) kullanın !");
 });
 //for testing
 app.get('/getRecord', function(req, res) {
