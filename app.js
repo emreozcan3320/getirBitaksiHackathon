@@ -7,9 +7,7 @@ var records = require('./models/record');
 
 
 var app = express();
-
-//port configuration for heroku and local
-app.set('port', (process.env.PORT || 5000));
+var port = process.env.PORT || 3000;
 
 // Body Parser Middleware
 app.use(bodyParser.json());
@@ -17,12 +15,14 @@ app.use(bodyParser.json());
 //mongoose promises
 mongoose.Promise = global.Promise;
 
-// Connect To Database
-mongoose.connect(process.env.MONGOLAB_URI);
+// Connect To Database for local
+//mongoose.connect('mongodb://localhost:27017/hackathon');
+// Connect To Database for mlab
+mongoose.connect('mongodb://kadiremre:kadiremre@ds137370.mlab.com:37370/heroku_z4k9qd99');
 
 // On Connection
 mongoose.connection.on('connected', function() {
-    console.log('Connected to database ' + config.database);
+    console.log('Connected to database');
 });
 
 // On Error
@@ -31,10 +31,9 @@ mongoose.connection.on('error', function(err) {
 });
 
 //redirect to /getRecord
-app.get('*', function(req, res) {
-    res.redirect('/getRecord');
+app.get('/', function(req, res) {
+    res.send("Lütfen /getRecord uzantısını (endpoint) kullanın");
 });
-
 //for testing
 app.get('/getRecord', function(req, res) {
     records.find({})
@@ -76,10 +75,11 @@ app.post('/getRecord', function(req, res) {
                 msg: 'Failed to register '
             });
         });
+
 });
 
 
 //server listen
-app.listen(app.get('port'), function() {
-    console.log('Node app is running on port', app.get('port'));
+app.listen(port, function() {
+    console.log("server is runing at port" + port);
 });

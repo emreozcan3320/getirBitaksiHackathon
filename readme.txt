@@ -21,4 +21,7 @@ get requesti yaparak bütün
 sonuçları görebilirsiniz
 
 /////////////
+
+// Connect To Database
+mongoose.connect(process.env.MONGOLAB_URI);
 */
