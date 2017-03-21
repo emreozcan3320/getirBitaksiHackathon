@@ -17,13 +17,8 @@ mongoose.Promise = global.Promise;
 
 // Connect To Database for local
 //mongoose.connect('mongodb://localhost:27017/hackathon');
-
 // Connect To Database for mlab
-//unwnated type for security
-//mongoose.connect('mongodb://kadiremre:kadiremre@ds137370.mlab.com:37370/heroku_z4k9qd99');
-
-//mlab connection type for security 
-mongoose.connect(process.env.MONGOLAB_URI);
+mongoose.connect('mongodb://kadiremre:kadiremre@ds137370.mlab.com:37370/heroku_z4k9qd99');
 
 // On Connection
 mongoose.connection.on('connected', function() {
