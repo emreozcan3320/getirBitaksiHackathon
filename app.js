@@ -15,14 +15,12 @@ app.use(bodyParser.json());
 //mongoose promises
 mongoose.Promise = global.Promise;
 
-// Connect To Database for local
-//mongoose.connect('mongodb://localhost:27017/hackathon');
-// Connect To Database for mlab
-mongoose.connect('mongodb://kadiremre:kadiremre@ds137370.mlab.com:37370/heroku_z4k9qd99');
+// Connect To Database
+mongoose.connect(config.database);
 
 // On Connection
 mongoose.connection.on('connected', function() {
-    console.log('Connected to database');
+    console.log('Connected to database' + config.database);
 });
 
 // On Error
