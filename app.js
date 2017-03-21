@@ -40,7 +40,15 @@ app.get('/getRecord', function(req, res) {
             var sonuc = [];
             for (var a = 0; a < copyRecord.length; a++) {
                 var date = new Date(copyRecord[a].createdAt);
-                var newData = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+                var year = date.getFullYear();
+                var month;
+                if((date.getMonth() + 1)<10){
+                   month = "0"+(date.getMonth() + 1);
+                }else{
+                   month = (date.getMonth() + 1);
+                }
+                var day = date.getDate();
+                var newData = year + "-" + month + "-" + day;
                 var obj = {
                     key: copyRecord[a].key,
                     value: copyRecord[a]._id,
